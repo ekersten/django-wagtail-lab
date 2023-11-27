@@ -2,3 +2,4 @@ node_modules
 chat/static
 __pycache__
 hot
+*.sqlite3
