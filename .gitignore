@@ -3,3 +3,5 @@ chat/static
 __pycache__
 hot
 *.sqlite3
+.vscode
+media/

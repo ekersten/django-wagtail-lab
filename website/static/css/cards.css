@@ -1,0 +1,6 @@
+.cards-deck {
+    .cards {
+        display: flex;
+        gap: 1rem;
+    }
+}

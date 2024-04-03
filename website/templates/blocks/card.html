@@ -1,0 +1,12 @@
+{% load wagtailimages_tags wagtailcore_tags %}
+<div class="card">
+    <h3 style="background: {{ self.background_color }};">{{ self.title }}</h3>
+    {% image self.image fill-200x200 as img %}
+    <img src="{{ img.url }}" alt="{{ self.title }}">
+    {{ self.content|richtext }}
+    <ul>
+        {% for item in self.bullets %}
+        <li>{{ item }}</li>
+        {% endfor %}
+    </ul>
+</div>

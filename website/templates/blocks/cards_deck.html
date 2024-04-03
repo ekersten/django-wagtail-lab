@@ -1,0 +1,10 @@
+{% load wagtailcore_tags %}
+<div class="cards-deck">
+    <h2 style="background: {{ self.background_color }}">{{ self.title }}</h2>
+    <div class="cards">
+        {% for card in self.cards %}
+            {% include_block card %}
+        {% endfor %}
+    </div>    
+    <p>{{ self.footer }}</p>
+</div>
