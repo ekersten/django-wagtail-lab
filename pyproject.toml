@@ -13,7 +13,14 @@ redis = "^5.0.1"
 channels = "^4.0.0"
 daphne = "^4.0.0"
 channels-redis = "^4.1.0"
+django-extensions = "^3.2.3"
+django-cors-headers = "^4.3.1"
+wagtail-grapple = "^0.24.0"
+aiodataloader = "^0.4.0"
 
+
+[tool.poetry.group.dev.dependencies]
+ipython = "^8.18.1"
 
 [build-system]
 requires = ["poetry-core"]
