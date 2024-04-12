@@ -2,7 +2,7 @@ from django import forms
 from django.utils.functional import cached_property
 from django.utils.translation import gettext_lazy as _
 from grapple.helpers import register_streamfield_block
-from grapple.models import GraphQLImage, GraphQLRichText, GraphQLString
+from grapple.models import GraphQLBoolean, GraphQLImage, GraphQLRichText, GraphQLStreamfield, GraphQLString
 from wagtail import blocks
 from wagtail.admin.staticfiles import versioned_static
 from wagtail.blocks.struct_block import StructBlockAdapter
@@ -70,11 +70,19 @@ class TabbedStructBlockAdapter(StructBlockAdapter):
 register(TabbedStructBlockAdapter(), TabbedStructBlock)
 
 
+@register_streamfield_block
 class CardBlock(TabbedStructBlock):
     title = blocks.CharBlock()
     content = blocks.RichTextBlock()
     image = ImageChooserBlock()
     background_color = blocks.CharBlock(default="#FFFFFF")
+
+    graphql_fields = [
+        GraphQLString("title"),
+        GraphQLRichText("content"),
+        GraphQLImage("image"),
+        GraphQLString("background_color"),
+    ]
 
     class Meta:
         label = "Card"
@@ -86,15 +94,51 @@ class CardBlock(TabbedStructBlock):
         }
 
 
+@register_streamfield_block
+class FeaturedCardBlock(TabbedStructBlock):
+    title = blocks.CharBlock()
+    content = blocks.RichTextBlock()
+    image = ImageChooserBlock()
+    background_color = blocks.CharBlock(default="#FFFFFF")
+    is_featured = blocks.BooleanBlock(default=False)
+
+    graphql_fields = [
+        GraphQLString("title"),
+        GraphQLRichText("content"),
+        GraphQLImage("image"),
+        GraphQLString("background_color"),
+        GraphQLBoolean("is_featured"),
+    ]
+
+    class Meta:
+        label = "Featured Card"
+        label_format = "Featured Card: {title}"
+        template = "blocks/card.html"
+        tabs = {
+            _("Content"): ("title", "content", "image"),
+            _("Background"): ("background_color",),
+            _("Config"): ("is_featured",),
+        }
+
+
+@register_streamfield_block
 class CardsDeckBlock(TabbedStructBlock):
     title = blocks.CharBlock()
     footer = blocks.CharBlock()
     cards = blocks.StreamBlock(
         [
             ("card", CardBlock()),
+            ("featured_card", FeaturedCardBlock()),
         ]
     )
     background_color = blocks.CharBlock(default="#FFFFFF")
+
+    graphql_fields = [
+        GraphQLString("title"),
+        GraphQLString("footer"),
+        GraphQLString("background_color"),
+        GraphQLStreamfield("cards"),
+    ]
 
     class Meta:
         label = "Card Deck"

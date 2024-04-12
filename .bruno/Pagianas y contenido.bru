@@ -1,0 +1,80 @@
+meta {
+  name: Pagianas y contenido
+  type: graphql
+  seq: 2
+}
+
+post {
+  url: http://localhost:8000/graphql/
+  body: graphql
+  auth: none
+}
+
+body:graphql {
+  query MyQuery {
+    	page(urlPath:"/prueba/estufa/")
+    {
+          id
+          title
+          url
+          slug
+          pageType
+          ...on WebsitePage {
+              body {
+                  id
+                  blockType
+                  ...on TitleAndParagraphBlock{
+                      title
+                      paragraph
+                  }
+                  ...on ImageAndRichTextBlock {
+                      image {
+                          big: rendition(fill:"200x200"){
+                              url
+                              width
+                              height
+                          }
+                      }
+                      richText
+                  }
+                	...on CardsDeckBlock {
+                    title
+                  	footer
+                    backgroundColor
+                    cards {
+                      id
+                      blockType
+                      ...on CardBlock {
+                          title
+                          content
+                          backgroundColor
+                          image {
+                            thumb: rendition(fill:"200x200"){
+                                url
+                                width
+                                height
+                            }
+                        }
+                      }
+                      ...on FeaturedCardBlock {
+                          title
+                          content
+                          backgroundColor
+                        	isFeatured
+                          image {
+                            thumb: rendition(fill:"200x200"){
+                                url
+                                width
+                                height
+                            }
+                        }
+                      }
+                    }
+                    
+                  }
+              }
+          }
+      }
+      
+  }
+}
