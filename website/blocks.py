@@ -10,6 +10,8 @@ from wagtail.images.blocks import ImageChooserBlock
 from wagtail.telepath import register
 from wagtail.templatetags.wagtailcore_tags import richtext
 
+from tabbed_structblock.blocks import TabbedStructBlock
+
 
 @register_streamfield_block
 class TitleAndParagraphBlock(blocks.StructBlock):
@@ -42,32 +44,6 @@ class ImageAndRichTextBlock(blocks.StructBlock):
 
     class Meta:
         label = "Image and Rich Text"
-
-
-class TabbedStructBlock(blocks.StructBlock):
-    def get_form_context(self, value, prefix="", errors=None):
-        context = super().get_form_context(value, prefix, errors)
-        return context
-
-    class Meta:
-        form_classname = "tabbed-struct-block"
-        form_template = "blocks/tabbed_struct_block.html"
-        tabs = {}
-
-
-class TabbedStructBlockAdapter(StructBlockAdapter):
-    js_constructor = "website.blocks.TabbedStructBlock"
-
-    @cached_property
-    def media(self):
-        structblock_media = super().media
-        return forms.Media(
-            js=structblock_media._js + [versioned_static("js/tabbed-struct-block.js")],
-            css={"all": (versioned_static("css/tabbed-struct-block.css"),)},
-        )
-
-
-register(TabbedStructBlockAdapter(), TabbedStructBlock)
 
 
 @register_streamfield_block
