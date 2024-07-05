@@ -16,6 +16,7 @@ django-extensions = "^3.2.3"
 django-cors-headers = "^4.3.1"
 wagtail-grapple = "^0.24.0"
 aiodataloader = "^0.4.0"
+wagtail-tabbed-structblock = "0.0.8"
 
 
 [tool.poetry.group.dev.dependencies]

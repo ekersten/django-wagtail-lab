@@ -9,8 +9,7 @@ from wagtail.blocks.struct_block import StructBlockAdapter
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.telepath import register
 from wagtail.templatetags.wagtailcore_tags import richtext
-
-from tabbed_structblock.blocks import TabbedStructBlock
+from wagtail_tabbed_structblock.blocks import TabbedStructBlock
 
 
 @register_streamfield_block

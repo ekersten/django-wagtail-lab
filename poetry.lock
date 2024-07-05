@@ -1082,6 +1082,14 @@ Wagtail = ">=4.1"
 testing = ["coverage[toml] (>=7.0,<8.0)", "django-cors-headers", "tox (>=4)"]
 
 [[package]]
+name = "wagtail-tabbed-structblock"
+version = "0.0.8"
+description = ""
+category = "main"
+optional = false
+python-versions = "<4.0,>=3.10"
+
+[[package]]
 name = "wcwidth"
 version = "0.2.12"
 description = "Measures the displayed width of unicode strings in a terminal"
@@ -1134,7 +1142,7 @@ testing = ["coverage (>=5.0.3)", "zope.event", "zope.testing"]
 [metadata]
 lock-version = "1.1"
 python-versions = "3.10.8"
-content-hash = "f8447184679d08868b168668e8c75f2b51cd07fbba49eaa77eb6d3261857da7a"
+content-hash = "99635038731d89ba9eb89326105d79b4cd62f5a64aa3bdf13a3d1cbb57aad878"
 
 [metadata.files]
 aiodataloader = [
@@ -1797,6 +1805,10 @@ wagtail-grapple = [
 wagtail-headless-preview = [
     {file = "wagtail_headless_preview-0.8.0-py3-none-any.whl", hash = "sha256:91b305c36573490856e212f9e5645ada81f72ad37f1bb00e6feddc5537252358"},
     {file = "wagtail_headless_preview-0.8.0.tar.gz", hash = "sha256:581d8419cd1ef1f7de88235445e9695e5591d46259283d56bfe814e8620fa1d5"},
+]
+wagtail-tabbed-structblock = [
+    {file = "wagtail_tabbed_structblock-0.0.8-py3-none-any.whl", hash = "sha256:133e89a49116d93d71194b24e13542b8c0f652fab8d180a0763ecd4f8be7d08f"},
+    {file = "wagtail_tabbed_structblock-0.0.8.tar.gz", hash = "sha256:495a399042e8765888ca0a3064c0298345d23036e0533fb9abedda73f8d6d60e"},
 ]
 wcwidth = [
     {file = "wcwidth-0.2.12-py2.py3-none-any.whl", hash = "sha256:f26ec43d96c8cbfed76a5075dac87680124fa84e0855195a6184da9c187f133c"},

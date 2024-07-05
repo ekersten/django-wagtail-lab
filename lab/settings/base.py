@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     "taggit",
     "corsheaders",
     "rest_framework",
+    "wagtail_tabbed_structblock",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
